@@ -4,21 +4,26 @@
     <!-- Carousel Banner -->
     <section id="hero">
       <div class="katarasa-carousel" style="margin-top: 7.5%;">
-  
         <v-carousel
-        :cycle="true"
-        :hide-delimiter-background="false"
-        :items-per-page="2"
-        :hide-controls="true"
-        :height="calculateHeight"
-        :show-arrows="false"
-        style="margin-top: 100px;"
-      >
-        <v-carousel-item v-for="(slide, i) in slides" :key="i">
+          :cycle="true"
+          :hide-delimiter-background="false"
+          :items-per-page="2"
+          :hide-controls="true"
+          :height="calculateHeight"
+          :show-arrows="false"
+          style="margin-top: 100px;"
+        >
+          <!-- <v-carousel-item v-for="(slide, i) in slides" :key="i">
           <v-img :src="'http://103.236.151.120:2026'+slide.link" :alt="slide.alt" max-width="100%"></v-img>
-        </v-carousel-item>
-      </v-carousel>
-       
+        </v-carousel-item> -->
+          <v-carousel-item v-for="(slide, i) in slides" :key="i">
+            <v-img
+              :src="getImageUrl(slide.link)"
+              :alt="slide.name"
+              max-width="100%"
+            ></v-img>
+          </v-carousel-item>
+        </v-carousel>
       </div>
     </section>
     <div>
@@ -27,108 +32,156 @@
         <v-container>
           <center>
             <div style=" background-color: transparent;" class=" katarasa-icon">
-              <v-img src="@/assets/img/homepage/katarasa.png" style="width: 50%;"></v-img>
+              <v-img
+                src="@/assets/img/homepage/katarasa.png"
+                style="width: 50%;"
+              ></v-img>
             </div>
           </center>
         </v-container>
       </section>
       <!-- Gambar About Us -->
-    <section>
-      <div>
-        <v-container>
-          <v-row>
-            <v-col cols="4">
-              <router-link to="/about">
-                <v-img src="@/assets/img/homepage/aboutUs.png"></v-img>
-              </router-link>
-            </v-col>
-            <v-col cols="4">
-              <router-link to="/Menu">
-                <v-img src="@/assets/img/homepage/Menu.png"></v-img>
-              </router-link>
-            </v-col>
-            <v-col cols="4">
-              <v-img src="@/assets/img/homepage/recoment.png">
-              </v-img>
-            </v-col>
-          </v-row>
-        </v-container>
-      </div>
-    </section>
+      <section>
+        <div>
+          <v-container>
+            <v-row>
+              <v-col cols="4">
+                <router-link to="/about">
+                  <v-img src="@/assets/img/homepage/aboutUs.png"></v-img>
+                </router-link>
+              </v-col>
+              <v-col cols="4">
+                <router-link to="/Menu">
+                  <v-img src="@/assets/img/homepage/Menu.png"></v-img>
+                </router-link>
+              </v-col>
+              <v-col cols="4">
+                <v-img src="@/assets/img/homepage/recoment.png"> </v-img>
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
+      </section>
       <!-- TakeUs -->
-  <section>
-    <v-container>
-      <div>
-        <v-col>
-          <h2 style="text-align: center; font-family: Poppins, sans-serif; " >Take Us To Bring Your Joy!</h2>
-        </v-col>
-      </div>
-    </v-container>
-  </section>
+      <section>
+        <v-container>
+          <div>
+            <v-col>
+              <h2
+                style="text-align: center; font-family: Poppins, sans-serif; "
+              >
+                Take Us To Bring Your Joy!
+              </h2>
+            </v-col>
+          </div>
+        </v-container>
+      </section>
       <!-- Menu -->
-   <section>
-    <div style=" height: 344px; background-color: transparent; " class="katarasa-menu">
-      <v-container>
-        <v-row>
-          <v-col cols="6" class="mt-4">
-            <center>
-              <!-- <v-col cols="6" md="8" class="d-flex justify-center align-items-center ">
+      <section>
+        <div
+          style=" height: 344px; background-color: transparent; "
+          class="katarasa-menu"
+        >
+          <v-container>
+            <v-row>
+              <v-col cols="6" class="mt-4">
+                <center>
+                  <!-- <v-col cols="6" md="8" class="d-flex justify-center align-items-center ">
                 <v-img src="@/assets/img/coffee/kopi1.png" height="auto" max-width="100%"></v-img>
               </v-col> -->
-                <!-- opsi 2 -->
-                <v-img src="@/assets/img/coffee/kopi1.png"
-                style="height: 280px; width: 425px ;  border-radius: 10px; margin-top: 5px; "
-                class="katarasa-menuImg"></v-img>
-            </center>
-          </v-col>
-          <v-col cols="6">
-            <center>
-              <div class="text-xs-center text-sm-center text-md-center text-lg-center mt-5">
-                <h1 style="color: #1D1851 ;font-family: Poppins, sans-serif;">Menu</h1>
-              </div>
-              <div style="display: flex; " >
-                <div class="text-xs-center text-sm-center text-md-center text-lg-center mt-5" style="color: #1D1851 ; font-family: Poppins, sans-serif;">
-                  <h4> Signature Coffee, Espresso Based, Manual Brew, Flavoured Latte, Non Coffee, Choco Series, Tea Series,
-                    Fruity.</h4>
+                  <!-- opsi 2 -->
+                  <v-img
+                    src="@/assets/img/coffee/kopi1.png"
+                    style="height: 280px; width: 425px ;  border-radius: 10px; margin-top: 5px; "
+                    class="katarasa-menuImg"
+                  ></v-img>
+                </center>
+              </v-col>
+              <v-col cols="6">
+                <center>
+                  <div
+                    class="text-xs-center text-sm-center text-md-center text-lg-center mt-5"
+                  >
+                    <h1
+                      style="color: #1D1851 ;font-family: Poppins, sans-serif;"
+                    >
+                      Menu
+                    </h1>
+                  </div>
+                  <div style="display: flex; ">
+                    <div
+                      class="text-xs-center text-sm-center text-md-center text-lg-center mt-5"
+                      style="color: #1D1851 ; font-family: Poppins, sans-serif;"
+                    >
+                      <h4>
+                        Signature Coffee, Espresso Based, Manual Brew, Flavoured
+                        Latte, Non Coffee, Choco Series, Tea Series, Fruity.
+                      </h4>
                     </div>
-              </div>
-              <router-link to="/Menu" style="color: inherit; text-decoration: none;">
-                <div style=" text-align: center;" class="mt-5">
-                  <v-btn rounded="pill"
-                    style=" width: 120px; height: 38px; border: 3px solid #1D1851 ; border-radius: 24px; background-color: transparent;">
-                    <h6 class="font-view text-none px-2 __btn-Login-text" style="font-size: medium; color: #3E3834;">
-                      View More
-                    </h6>
-                  </v-btn>
-                </div>
-              </router-link>
-            </center>
-          </v-col>
-        </v-row>
-      </v-container>
-    </div>
-   </section>
+                  </div>
+                  <router-link
+                    to="/Menu"
+                    style="color: inherit; text-decoration: none;"
+                  >
+                    <div style=" text-align: center;" class="mt-5">
+                      <v-btn
+                        rounded="pill"
+                        style=" width: 120px; height: 38px; border: 3px solid #1D1851 ; border-radius: 24px; background-color: transparent;"
+                      >
+                        <h6
+                          class="font-view text-none px-2 __btn-Login-text"
+                          style="font-size: medium; color: #3E3834;"
+                        >
+                          View More
+                        </h6>
+                      </v-btn>
+                    </div>
+                  </router-link>
+                </center>
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
+      </section>
       <!-- Our Coffee -->
       <section>
-        <div style=" height: 344px; background-color: #3E3834; " class="katarasa-menu">
+        <div
+          style=" height: 344px; background-color: #3E3834; "
+          class="katarasa-menu"
+        >
           <v-container>
             <v-row>
               <v-col cols="6">
                 <center>
-                  <h2 class="font-katarasa mt-10" style="color: #FBFBFB ;">Our Coffee</h2>
+                  <h2 class="font-katarasa mt-10" style="color: #FBFBFB ;">
+                    Our Coffee
+                  </h2>
                   <div>
-                    <div class="text-xs-center text-sm-center text-md-center text-lg-center mt-5" style="color: #FBFBFB ; font-family: Poppins, sans-serif;">
-                      <h4>  Try the sensation of quality Gayo Coffee at Low Prices!</h4>
-                        </div>
+                    <div
+                      class="text-xs-center text-sm-center text-md-center text-lg-center mt-5"
+                      style="color: #FBFBFB ; font-family: Poppins, sans-serif;"
+                    >
+                      <h4>
+                        Try the sensation of quality Gayo Coffee at Low Prices!
+                      </h4>
+                    </div>
                     <!-- <h6 class="font-katarasa1 mt-1" style="color: #FBFBFB;">
                       Try the sensation of quality Gayo Coffee at Low Prices!
                     </h6> -->
                   </div>
-                  <router-link to="/Product" style="color: inherit; text-decoration: none;">
+                  <router-link
+                    to="/Product"
+                    style="color: inherit; text-decoration: none;"
+                  >
                     <div style=" text-align: center;" class="mt-5">
-                      <v-btn rounded="pill"
-                        style=" width: 120px; height: 38px; border: 3px solid #FBFBFB; border-radius: 24px; background-color: transparent;">
-                        <h6 class="font-view text-none px-2 __btn-Login-text" style="font-size: medium; color: #FBFBFB;">
+                      <v-btn
+                        rounded="pill"
+                        style=" width: 120px; height: 38px; border: 3px solid #FBFBFB; border-radius: 24px; background-color: transparent;"
+                      >
+                        <h6
+                          class="font-view text-none px-2 __btn-Login-text"
+                          style="font-size: medium; color: #FBFBFB;"
+                        >
                           View More
                         </h6>
                       </v-btn>
@@ -138,9 +191,11 @@
               </v-col>
               <v-col cols="6" class="mt-4">
                 <center>
-                  <v-img src="@/assets/img/newimg/aboutus/homepage/biji.jpg"
+                  <v-img
+                    src="@/assets/img/newimg/aboutus/homepage/biji.jpg"
                     style="height: 280px; width: 425px ;  border-radius: 10px; margin-top: 5px; "
-                    class="katarasa-menuImg"></v-img>
+                    class="katarasa-menuImg"
+                  ></v-img>
                 </center>
               </v-col>
             </v-row>
@@ -148,72 +203,90 @@
         </div>
       </section>
       <!-- Marchendise -->
-     <section>
-      <div style=" height: 344px; background-color: transparent; " class="katarasa-menu">
-        <v-container>
-          <v-row>
-            <v-col cols="6" class="mt-4">
-              <center>
-                <v-img src="@/assets/img/newimg/aboutus/homepage/product.jpg"
-                  style="height: 280px; width: 425px ;   border-radius: 10px; margin-top: 5px; "
-                  class="katarasa-menuImg"></v-img>
-              </center>
-            </v-col>
-            <v-col cols="6">
-              <center>
-                <div style="height: auto; width: 100%; ">
-                  <h2 class="font-katarasa mt-8" style="color: #131035;">Product</h2>
-                  <div class="text-xs-center text-sm-center text-md-center text-lg-center mt-5" style="color: #1D1851 ; font-family: Poppins, sans-serif;">
-                    <h4> Barista Tools & Special Tumbler for you!</h4>
-                      </div>
-                  <!-- <h6 class="font-katarasa1 mt-1" style="color: #1D1851 ;">
+      <section>
+        <div
+          style=" height: 344px; background-color: transparent; "
+          class="katarasa-menu"
+        >
+          <v-container>
+            <v-row>
+              <v-col cols="6" class="mt-4">
+                <center>
+                  <v-img
+                    src="@/assets/img/newimg/aboutus/homepage/product.jpg"
+                    style="height: 280px; width: 425px ;   border-radius: 10px; margin-top: 5px; "
+                    class="katarasa-menuImg"
+                  ></v-img>
+                </center>
+              </v-col>
+              <v-col cols="6">
+                <center>
+                  <div style="height: auto; width: 100%; ">
+                    <h2 class="font-katarasa mt-8" style="color: #131035;">
+                      Product
+                    </h2>
+                    <div
+                      class="text-xs-center text-sm-center text-md-center text-lg-center mt-5"
+                      style="color: #1D1851 ; font-family: Poppins, sans-serif;"
+                    >
+                      <h4>Barista Tools & Special Tumbler for you!</h4>
+                    </div>
+                    <!-- <h6 class="font-katarasa1 mt-1" style="color: #1D1851 ;">
                     Barista Tools & Special Tumbler for you!
                   </h6> -->
-                  <router-link to="/merchandise" style="color: inherit; text-decoration: none;">
-                    <div style=" text-align: center;" class="mt-5">
-                      <v-btn rounded="pill"
-                        style=" width: 120px; height: 38px; border: 3px solid #1D1851 ; border-radius: 24px; background-color: transparent;">
-                        <h6 class="font-view text-none px-2 __btn-Login-text"
-                          style="font-size: medium; color: #1D1851; width: 100%; height: auto;">
-                          View More
-                        </h6>
-                      </v-btn>
-                    </div>
-                  </router-link>
-                </div>
-              </center>
-            </v-col>
-          </v-row>
-        </v-container>
-      </div>
-     </section>
+                    <router-link
+                      to="/merchandise"
+                      style="color: inherit; text-decoration: none;"
+                    >
+                      <div style=" text-align: center;" class="mt-5">
+                        <v-btn
+                          rounded="pill"
+                          style=" width: 120px; height: 38px; border: 3px solid #1D1851 ; border-radius: 24px; background-color: transparent;"
+                        >
+                          <h6
+                            class="font-view text-none px-2 __btn-Login-text"
+                            style="font-size: medium; color: #1D1851; width: 100%; height: auto;"
+                          >
+                            View More
+                          </h6>
+                        </v-btn>
+                      </div>
+                    </router-link>
+                  </div>
+                </center>
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
+      </section>
     </div>
     <foote />
   </div>
 </template>
- 
+
 <script>
 import contact from "../components/ContactSection";
 import navigation from "../components/backup";
 import foote from "../components/Footer";
+import axios from "axios";
 
 export default {
   data() {
     return {
       slides: [
         // {  src: require('@/assets/img/newimg/aboutus/event/eventRamadhan.webp'), },
-        // {  src: require('@/assets/img/homepage/banner1.png'), },
-        // {  src: require('@/assets/img/newimg/aboutus/aboutus/AboutUS.webp'),} ,   
-      ]
-    }
+        // { src: require("@/assets/img/homepage/banner1.png") },
+        // { src: require("@/assets/img/newimg/aboutus/aboutus/AboutUS.webp") },
+      ],
+    };
   },
   computed: {
     calculateHeight() {
       // calculate the height of the carousel based on the aspect ratio of the slides
-      return `${(9 / 28) * this.$vuetify.breakpoint.width}px`
-    }
+      return `${(9 / 28) * this.$vuetify.breakpoint.width}px`;
+    },
   },
-  
+
   methods: {
     prev() {
       this.$refs.carousel.prev();
@@ -221,20 +294,45 @@ export default {
     next() {
       this.$refs.carousel.next();
     },
+    
     getBanner() {
-      
-            var requestOptions = {
-              method: 'GET',
-              redirect: 'follow'
-            };
+      const baseURL = "http://103.236.151.120:2026";
+      const endpoint = "/nimda/other/data-banner";
 
-            fetch("http://103.236.151.120:2026/nimda/other/data-banner", requestOptions)
-              .then(response => response.json())
-              .then(result => this.slides=result.data)
-              .catch(error => console.log('error', error));
-              console.log("iniii banner", this.slides);
-              
-            },
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      axios
+        .get(baseURL + endpoint, requestOptions)
+        .then((response) => {
+          this.slides = response.data.data;
+          console.log("iniii banner", this.slides);
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
+    },
+    
+    getImageUrl(link) {
+      return "http://103.236.151.120:2026" + link;
+    },
+
+    // dataBanner() {
+    //   const baseURL = "http://103.236.151.120:2026";
+    //   const endpoint = "/nimda/other/data-banner";
+
+    //   axios
+    //     .get(baseURL + endpoint)
+    //     .then((response) => {
+    //       this.slide = response.data.data;
+    //       console.log("ini banner", this.slide);
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error fetching data:", error);
+    //     });
+    // },
   },
 
   components: {
@@ -243,19 +341,12 @@ export default {
     foote,
   },
   mounted() {
-
-        const token= localStorage.getItem('token')
-        console.log('tokenLogin', token),
-
-        this.getBanner();
-
-        setInterval(() => {
     this.getBanner();
-  }, 5000);
-    },
-
-  
-}
+    setInterval(() => {
+      this.getBanner();
+    }, 5000);
+  },
+};
 </script>
 
 <style lang="scss">
@@ -324,36 +415,33 @@ export default {
   width: 100%;
 }
 
-
-
 .font-katarasa {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 30px;
   font-weight: 700;
   color: #fffbe9;
 }
 
 .font-katarasa1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 200;
   color: #fffbe9;
 }
 
 @media (max-width: 600px) {
-
   .font-takeus {
-    font-family: 'Poppins', serif;
+    font-family: "Poppins", serif;
     font-style: normal;
     font-weight: 600;
     font-size: 30px;
     /* identical to box height */
     /* Kata Rasa/04 */
-    color: #3A332E;
+    color: #3a332e;
   }
 
   .font-view {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: #935330;
@@ -361,19 +449,18 @@ export default {
 }
 
 @media (min-width: 601px) and (max-width: 960px) {
-
   .font-takeus {
-    font-family: 'Poppins', serif;
+    font-family: "Poppins", serif;
     font-style: normal;
     font-weight: 600;
     font-size: 30px;
     /* identical to box height */
     /* Kata Rasa/04 */
-    color: #3A332E;
+    color: #3a332e;
   }
 
   .font-view {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 20px;
     font-weight: bold;
     color: #935330;
@@ -381,21 +468,18 @@ export default {
 }
 
 @media (min-width: 961px) {
-
-
   .font-takeus {
-    font-family: 'Poppins', serif;
+    font-family: "Poppins", serif;
     font-style: normal;
     font-weight: 600;
     font-size: 30px;
     /* identical to box height */
     /* Kata Rasa/04 */
-    color: #3A332E;
+    color: #3a332e;
   }
 
-
   .font-view {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 20px;
     font-weight: bold;
     color: #935330;
@@ -408,19 +492,15 @@ export default {
     height: auto;
   }
 
-
-
   .font-view {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 20px;
     font-weight: bold;
     color: #935330;
   }
-
 }
 
 @media only screen and (max-width: 768px) {
-
   .katarasa-carousel {
     width: 100%;
     height: auto;

@@ -8,6 +8,7 @@
     },
     "dependencies": {
         "@egjs/vue-flicking": "^4.10.6",
+        "axios": "^1.5.0",
         "core-js": "^3.8.2",
         "deepai": "^1.0.17",
         "firebase": "^7.24.0",
