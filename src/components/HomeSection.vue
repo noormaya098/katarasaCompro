@@ -13,16 +13,16 @@
           :show-arrows="false"
           style="margin-top: 100px;"
         >
-          <!-- <v-carousel-item v-for="(slide, i) in slides" :key="i">
-          <v-img :src="'http://103.236.151.120:2026'+slide.link" :alt="slide.alt" max-width="100%"></v-img>
-        </v-carousel-item> -->
           <v-carousel-item v-for="(slide, i) in slides" :key="i">
+          <v-img :src="slide.src" :alt="slide.alt" max-width="100%"></v-img>
+        </v-carousel-item>
+          <!-- <v-carousel-item v-for="(slide, i) in slides" :key="i">
             <v-img
               :src="getImageUrl(slide.link)"
               :alt="slide.name"
               max-width="100%"
             ></v-img>
-          </v-carousel-item>
+          </v-carousel-item> -->
         </v-carousel>
       </div>
     </section>
@@ -275,8 +275,8 @@ export default {
     return {
       slides: [
         // {  src: require('@/assets/img/newimg/aboutus/event/eventRamadhan.webp'), },
-        // { src: require("@/assets/img/homepage/banner1.png") },
-        // { src: require("@/assets/img/newimg/aboutus/aboutus/AboutUS.webp") },
+        { src: require("@/assets/img/homepage/banner1.png") },
+        { src: require("@/assets/img/newimg/aboutus/aboutus/AboutUS.webp") },
       ],
     };
   },
